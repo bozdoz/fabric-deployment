@@ -11,7 +11,7 @@ def gitpull(ctx):
 
 @task
 def npmbuild(ctx):
-  run('npm run build')
+  run('npm ci', 'npm run build')
   
   
 def run(*cmds):
