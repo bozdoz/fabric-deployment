@@ -14,7 +14,7 @@ PASSWORD=qwertydvorak
 CWD=/path/to/my/remote/repo
 ```
 
-`> docker run --rm -it --env-file env bozdoz/fabric-deployment gitpull`
+`> docker run --rm -it --env-file env bozdoz/fabric-deployment fab gitpull`
 
 If your remote user has proper permissions, your git repo will be pulled remotely.
 
