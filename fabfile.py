@@ -9,6 +9,11 @@ def gitpull(ctx):
   run('git pull')
 
 
+@task
+def npmbuild(ctx):
+  run('npm run build')
+  
+  
 def run(*cmds):
   with connect() as con:
     cwd = os.getenv('CWD')
