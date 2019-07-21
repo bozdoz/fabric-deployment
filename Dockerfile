@@ -5,4 +5,3 @@ RUN apk update \
   && pip install fabric \
   && rm -rf /var/cache/apk/*
 COPY ./fabfile.py ./
-ENTRYPOINT ["fab"]
