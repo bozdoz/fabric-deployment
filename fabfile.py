@@ -12,8 +12,13 @@ def gitpull(ctx):
 @task
 def npmbuild(ctx):
   run('npm i', 'npm run build')
-  
-  
+
+
+@task
+def dockercomposeup(ctx):
+  run('docker-compose up -d')
+
+
 def run(*cmds):
   with connect() as con:
     cwd = os.getenv('CWD')
