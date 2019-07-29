@@ -18,7 +18,12 @@ def npmbuild(ctx):
 def dockercomposeup(ctx):
   run('docker-compose up -d')
 
+  
+@task
+def dockercomposebuild(ctx):
+  run('docker-compose up -d --build')
 
+  
 def run(*cmds):
   with connect() as con:
     cwd = os.getenv('CWD')
