@@ -23,7 +23,22 @@ def dockercomposeup(ctx):
 def dockercomposebuild(ctx):
   run('docker-compose up -d --build')
 
-  
+
+@task
+def gulpproduction(ctx):
+  run('gulp production')
+
+
+@task
+def djangostatic(ctx):
+  run('./manage.py collectstatic --noinput')
+
+
+@task
+def apachereload(ctx):
+  run('sudo /etc/init.d/apache2 reload')
+
+
 def run(*cmds):
   with connect() as con:
     cwd = os.getenv('CWD')
