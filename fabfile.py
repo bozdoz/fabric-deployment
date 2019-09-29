@@ -25,6 +25,11 @@ def dockercomposebuild(ctx):
 
 
 @task
+def dockercomposerestart(ctx):
+  run('docker-compose restart')
+
+
+@task
 def gulpproduction(ctx):
   run('gulp production')
 
