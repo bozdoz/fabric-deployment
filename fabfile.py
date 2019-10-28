@@ -58,5 +58,6 @@ def connect():
     user=os.getenv('USER'),
     connect_kwargs=dict(
       password=os.getenv('PASSWORD')
-    )
+    ),
+    port=os.getenv('PORT', 22)
   )
