@@ -10,8 +10,13 @@ def gitpull(ctx):
 
 
 @task
+def npminstall(ctx):
+  run('npm i')
+
+
+@task
 def npmbuild(ctx):
-  run('npm i', 'npm run build')
+  run('npm run build')
 
 
 @task
