@@ -32,11 +32,19 @@ For ease of use with CI/CD.
 ## Commands
 
 `fab ls` -> list files and directories
+
 `fab gitpull` -> run git pull
+
 `fab npminstall npmbuild` -> run npm install then npm build
+
 `fab dockercomposeup` -> run docker-compose up -d
+
 `fab dockercomposebuild` -> run docker-compose up -d --build
+
 `fab dockercomposerestart` -> run docker-compose restart
+
 `fab gulpproduction` -> run gulp production
+
 `fab djangostatic` -> run ./manage.py collectstatic --noinput
+
 `fab apachereload` -> run sudo /etc/init.d/apache2 reload
