@@ -5,6 +5,10 @@ from fabric import task
 
 
 @task
+def ls(ctx):
+  run('ls')
+
+@task
 def gitpull(ctx):
   run('git pull')
 
@@ -62,7 +66,8 @@ def connect():
     host=os.getenv('HOST'), 
     user=os.getenv('USER'),
     connect_kwargs=dict(
-      password=os.getenv('PASSWORD')
+      password=os.getenv('PASSWORD'),
+      key_filename=os.getenv('SSH_KEY')
     ),
     port=os.getenv('PORT', 22)
   )

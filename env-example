@@ -2,3 +2,5 @@ HOST=12.34.567.89
 USER=user
 PASSWORD=password
 CWD=/home/
+# pass this as a volume or "file" environment variable
+SSH_KEY=/id_rsa
