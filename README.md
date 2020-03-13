@@ -32,17 +32,17 @@ For ease of use with CI/CD.
 
 ## Commands
 
-| apachereload | Reloads Apache, assuming sudo permissions are setup
-| djangostatic | Runs collectstatic on a Django project
-| dockercomposebuild | Runs docker-compose up -d --build
-| dockercomposerestart | Runs docker-compose restart, which stops/starts containers
-| dockercomposeup | Runs docker-compose up -d
-| gitpull | Runs git pull
-| gulpproduction | Runs gulp production
-| ls | Runs ls for debugging purposes
-| npmbuild | Runs npm run build
-| npmci | Runs npm ci
-| npminstall | Runs npm install
-| put | Transfer files from local disk to remote server
-| pwd | Runs pwd for debugging purposes
-| runscript | Moves a shell script to remote CWD, then executes it
+| apachereload | Reloads Apache, assuming sudo permissions are setup |
+| djangostatic | Runs collectstatic on a Django project |
+| dockercomposebuild | Runs docker-compose up -d --build |
+| dockercomposerestart | Runs docker-compose restart, which stops/starts containers |
+| dockercomposeup | Runs docker-compose up -d |
+| gitpull | Runs git pull |
+| gulpproduction | Runs gulp production |
+| ls | Runs ls for debugging purposes |
+| npmbuild | Runs npm run build |
+| npmci | Runs npm ci |
+| npminstall | Runs npm install |
+| put | Transfer files from local disk to remote server |
+| pwd | Runs pwd for debugging purposes |
+| runscript | Moves a shell script to remote CWD, then executes it |
