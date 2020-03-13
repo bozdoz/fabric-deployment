@@ -1,73 +1,120 @@
 import os
-
-from fabric import Connection
 from fabric import task
+
+from connection import Connection
+
+
+@task
+def pwd(ctx):
+  """Runs pwd for debugging purposes
+  """
+  _run('pwd')
 
 
 @task
 def ls(ctx):
-  run('ls')
+  """Runs ls for debugging purposes
+  """
+  _run('ls')
+
 
 @task
 def gitpull(ctx):
-  run('git pull')
+  """Runs git pull
+  """
+  _run('git pull')
 
 
 @task
 def npminstall(ctx):
-  run('npm i')
+  """Runs npm install
+  """
+  _run('npm i')
+
+
+@task
+def npmci(ctx):
+  """Runs npm ci
+  """
+  _run('npm ci')
 
 
 @task
 def npmbuild(ctx):
-  run('npm run build')
+  """Runs npm run build
+  """
+  _run('npm run build')
 
 
 @task
 def dockercomposeup(ctx):
-  run('docker-compose up -d')
+  """Runs docker-compose up -d
+  """
+  _run('docker-compose up -d')
 
-  
+
 @task
 def dockercomposebuild(ctx):
-  run('docker-compose up -d --build')
+  """Runs docker-compose up -d --build
+  """
+  _run('docker-compose up -d --build')
 
 
 @task
 def dockercomposerestart(ctx):
-  run('docker-compose restart')
+  """Runs docker-compose restart, which stops/starts containers
+  """
+  _run('docker-compose restart')
 
 
 @task
 def gulpproduction(ctx):
-  run('gulp production')
+  """Runs gulp production
+  """
+  _run('gulp production')
 
 
 @task
 def djangostatic(ctx):
-  run('./manage.py collectstatic --noinput')
+  """Runs collectstatic on a Django project
+  """
+  _run('./manage.py collectstatic --noinput')
 
 
 @task
 def apachereload(ctx):
-  run('sudo /etc/init.d/apache2 reload')
+  """Reloads Apache, assuming sudo permissions are setup
+  """
+  _run('sudo /etc/init.d/apache2 reload')
 
 
-def run(*cmds):
-  with connect() as con:
-    cwd = os.getenv('CWD')
-    with con.cd(cwd):
-      for cmd in cmds:
-        con.run(cmd)
+@task(help=dict(file="local shell script to transfer and execute"))
+def runscript(ctx, file):
+  """Moves a shell script to remote CWD, then executes it
+  """
+  # moves file to cwd
+  _put(file)
+  # gets relative path to remote file
+  base = os.path.basename(file)
+  # calls remote shell script
+  _run("sh %s" % base)
 
 
-def connect():
-  return Connection(
-    host=os.getenv('HOST'), 
-    user=os.getenv('USER'),
-    connect_kwargs=dict(
-      password=os.getenv('PASSWORD'),
-      key_filename=os.getenv('SSH_KEY')
-    ),
-    port=os.getenv('PORT', 22)
-  )
+@task(help=dict(local="local file", remote="remote file"))
+def put(ctx, local, remote="./"):
+  """Transfer files from local disk to remote server
+  """
+  _put(local, remote)
+
+
+def _put(local, remote="./"):
+  with Connection() as con:
+    # `put` uses the user's home directory as reference
+    # requires an absolute path
+    remote_abs = os.path.abspath(os.path.join(con.cwd, remote))
+    con.put(local, remote=remote_abs)
+
+
+def _run(cmd):
+  with Connection() as con:
+    con.run(cmd)

@@ -4,9 +4,10 @@ Dockerfile for remote commands, CI/CD.
 
 ## Usage
 
-Run with an env file: 
+Run with an env file:
 
 **env**
+
 ```bash
 USER=user
 HOST=12.34.567.89
@@ -27,24 +28,21 @@ If your remote user has proper permissions you can execute commands through fabr
 
 ## But Why?
 
-For ease of use with CI/CD.  
+For ease of use with CI/CD.
 
 ## Commands
 
-`fab ls` -> list files and directories
-
-`fab gitpull` -> run git pull
-
-`fab npminstall npmbuild` -> run npm install then npm build
-
-`fab dockercomposeup` -> run docker-compose up -d
-
-`fab dockercomposebuild` -> run docker-compose up -d --build
-
-`fab dockercomposerestart` -> run docker-compose restart
-
-`fab gulpproduction` -> run gulp production
-
-`fab djangostatic` -> run ./manage.py collectstatic --noinput
-
-`fab apachereload` -> run sudo /etc/init.d/apache2 reload
+| apachereload | Reloads Apache, assuming sudo permissions are setup
+| djangostatic | Runs collectstatic on a Django project
+| dockercomposebuild | Runs docker-compose up -d --build
+| dockercomposerestart | Runs docker-compose restart, which stops/starts containers
+| dockercomposeup | Runs docker-compose up -d
+| gitpull | Runs git pull
+| gulpproduction | Runs gulp production
+| ls | Runs ls for debugging purposes
+| npmbuild | Runs npm run build
+| npmci | Runs npm ci
+| npminstall | Runs npm install
+| put | Transfer files from local disk to remote server
+| pwd | Runs pwd for debugging purposes
+| runscript | Moves a shell script to remote CWD, then executes it
