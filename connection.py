@@ -1,14 +1,13 @@
 import os
 import fabric
 
-CWD = os.environ['CWD']
-
 
 class Connection:
   def __init__(self):
     self.con = connect()
 
   def __enter__(self):
+    CWD = os.environ['CWD']
     self.con.command_cwds = [CWD]
     return self.con
 

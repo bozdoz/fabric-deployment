@@ -25,7 +25,7 @@ def gitpull(ctx):
   _run('git pull')
 
 
-@task
+@task(aliases=['npmi'])
 def npminstall(ctx):
   """Runs npm install
   """
@@ -46,21 +46,21 @@ def npmbuild(ctx):
   _run('npm run build')
 
 
-@task
+@task(aliases=['dcup'])
 def dockercomposeup(ctx):
   """Runs docker-compose up -d
   """
   _run('docker-compose up -d')
 
 
-@task
+@task(aliases=['dcbuild'])
 def dockercomposebuild(ctx):
   """Runs docker-compose up -d --build
   """
   _run('docker-compose up -d --build')
 
 
-@task
+@task(aliases=['dcrestart'])
 def dockercomposerestart(ctx):
   """Runs docker-compose restart, which stops/starts containers
   """
