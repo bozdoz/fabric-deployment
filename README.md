@@ -22,11 +22,21 @@ SSH_KEY=/id_rsa
 
 ### Passing a Private SSH KEY
 
-`> docker run --rm -it --env-file env -v ~/.ssh/id_rsa:/id_rsa bozdoz/fabric-deployment fab ls`
+```bash
+> docker run --rm -it \
+  --env-file env \
+  -v ~/.ssh/id_rsa:/id_rsa \
+  -e SSH_KEY=/id_rsa \
+  bozdoz/fabric-deployment fab ls
+```
 
 If your remote user has proper permissions you can execute commands through fabric.
 
-## But Why?
+### Troubleshooting CI/CD Pipeline
+
+You can use `bozdoz/fabric-deployment` as a CI/CD image (In GitLab for example), but you must execute fab commands with the collection flag `-r /app` to tell fabric where the root fabfile is (see Dockerfile WORKDIR)
+
+## But Why Do Any of This?
 
 For ease of use with CI/CD.
 
