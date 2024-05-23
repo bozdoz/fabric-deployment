@@ -7,13 +7,17 @@
 	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 	"dockerFile": "../Dockerfile",
 	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.shell.linux": null
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.shell.linux": null
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.python"
+			]
+		}
 	},
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"ms-python.python"
-	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Uncomment the next line to run commands after the container is created - for example installing git.
@@ -22,7 +26,7 @@
 	"runArgs": [
 		"-v",
 		"${env:HOME}${env:USERPROFILE}/.ssh:/root/.ssh-localhost:ro"
-	],
+	]
 	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-in-docker.
 	// "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.

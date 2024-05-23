@@ -1,17 +1,6 @@
-FROM python:3.8.0-alpine
+FROM python:3.12-alpine3.19
 
-RUN apk update \
-  && apk add \
-    gcc \
-    musl-dev \
-    linux-headers \
-    libffi-dev \
-    openssl-dev \
-    make \
-    bash \
-    openssh \
-  && pip install fabric==2.5.0 \
-  && rm -rf /var/cache/apk/*
+RUN pip install fabric==3.2.2
 
 WORKDIR /app
 
