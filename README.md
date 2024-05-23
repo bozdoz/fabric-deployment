@@ -77,7 +77,7 @@ For ease of use with CI/CD.
 | apachereload         | Reloads Apache, assuming sudo permissions are setup                 |
 | djangostatic         | Runs collectstatic on a Django project                              |
 | dockercomposebuild   | Runs docker-compose up -d --build                                   |
-| dockercomposerestart | Runs docker-compose restart, which stops/arts containers            |
+| dockercomposerestart | Runs docker-compose restart, which stops/starts containers          |
 | dockercomposeup      | Runs docker-compose up -d                                           |
 | gitpull              | Runs git pull                                                       |
 | gulpproduction       | Runs gulp production                                                |
