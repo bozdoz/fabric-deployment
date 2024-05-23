@@ -9,9 +9,9 @@ jobs:
   push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Docker Push
-        uses: bozdoz/auto-docker-push@v2
+        uses: bozdoz/auto-docker-push@v3
         with:
           image: bozdoz/fabric-deployment
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
